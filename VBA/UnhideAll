@@ -1,20 +1,6 @@
-Sub UnhideAllRowsAndColumnsInAllWorkbooks()
-    Dim wb As Workbook
-    Dim ws As Worksheet
-    Dim col As Range
-    Dim rw As Range
-
-    Application.Calculation = xlCalculationManual
-    ' Loop through all open workbooks
-    For Each wb In Application.Workbooks
-        ' Loop through each worksheet in the workbook
-        For Each ws In wb.Worksheets
-            With ws
-                ' Unhide all rows
-                .Rows.Hidden = False
-                ' Unhide all columns
-                .Columns.Hidden = False
-            End With
-        Next ws
-    Next wb   
+' Made by: Hazzard
+Sub UnhideAllRowsAndColumnsInAllWorkbooks() '[Step A] Setup – declare iterators and optimize calc for speed
+    Dim wb As Workbook, ws As Worksheet, col As Range, rw As Range: Application.Calculation = xlCalculationManual
+    '[Step B] Iterate books & sheets – unhide rows and columns on every sheet
+    For Each wb In Application.Workbooks: For Each ws In wb.Worksheets: With ws: .Rows.Hidden = False: .Columns.Hidden = False: End With: Next ws: Next wb
 End Sub
