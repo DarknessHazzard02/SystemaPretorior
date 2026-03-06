@@ -1,0 +1,25 @@
+Sub FormatearTodasLasHojasEnTodosLosLibros()
+    Dim wb As Workbook
+    Dim ws As Worksheet
+
+    For Each wb In Application.Workbooks
+        For Each ws In wb.Worksheets
+            With ws
+                ' Format cells
+                With .Cells
+                    .HorizontalAlignment = xlCenter
+                    .VerticalAlignment = xlCenter
+                    .Font.Name = "Calibri"
+                    .Font.Size = 10
+                End With
+
+                ' Turn off gridlines
+                .Activate
+                ActiveWindow.DisplayGridlines = False
+
+                ' Simulate Ctrl + Home (select A1)
+                .Range("A1").Select
+            End With
+        Next ws
+    Next wb
+End Sub
