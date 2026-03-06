@@ -1,0 +1,15 @@
+Sub SetZoomTo85PercentInAllWorkbooks()
+    Dim wb As Workbook
+    Dim ws As Worksheet
+
+    ' Loop through all open workbooks
+    For Each wb In Application.Workbooks
+        ' Loop through each worksheet in the workbook
+        For Each ws In wb.Worksheets
+            On Error Resume Next
+            ws.Activate
+            ActiveWindow.Zoom = 85
+            On Error GoTo 0
+        Next ws
+    Next wb
+End Sub
