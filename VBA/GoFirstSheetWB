@@ -1,0 +1,9 @@
+' Made by: Hazzard
+Sub GoToFirstSheetInAllWorkbooks() '[Step A] Iterate workbooks – activate first worksheet in each
+    Dim wb As Workbook
+    '[Step B] Activate first sheet – tolerate missing/hidden cases
+    For Each wb In Application.Workbooks: On Error Resume Next: wb.Worksheets(1).Activate: On Error GoTo 0
+    Next wb
+    '[Step C] Restore calc (no-op safety) – ensure automatic calculation
+    Application.Calculation = xlCalculationAutomatic
+End Sub
