@@ -1,0 +1,7 @@
+' Made by: Hazzard
+Sub closeallotherworkbooks() '[Step A] Loop workbooks – iterate through all open Excel files
+    Dim wb As Workbook
+    '[Step B] Close non-host workbooks – save changes and close if not this file
+    For Each wb In Workbooks: If wb.Name <> ThisWorkbook.Name Then wb.Close SaveChanges:=True
+    Next wb
+End Sub
