@@ -1,0 +1,12 @@
+' Made by: Hazzard
+Sub FormatAllSheetsInAllWorkbooks() '[Step A] Iterate books & sheets – apply formatting to every sheet
+    Dim wb As Workbook, ws As Worksheet
+    For Each wb In Application.Workbooks: For Each ws In wb.Worksheets
+        '[Step B] Cell formatting – center alignment and standard font
+        With ws.Cells: .HorizontalAlignment = xlCenter: .VerticalAlignment = xlCenter: .Font.Name = "Calibri": .Font.Size = 10: End With
+        '[Step C] View settings – turn off gridlines in the active window of the sheet
+        ws.Activate: ActiveWindow.DisplayGridlines = False
+        '[Step D] Position cursor – select A1 as the starting cell
+        ws.Range("A1").Select
+    Next ws: Next wb
+End Sub
