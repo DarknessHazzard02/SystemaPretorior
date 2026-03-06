@@ -1,0 +1,8 @@
+' Made by: Hazzard
+Sub VBA_Open_All_Workbooks() '[Step A] Optimize – switch to manual calc before opening files
+    Application.Calculation = xlCalculationManual
+    '[Step B] Open files – load all required workbooks from fixed paths
+    Workbooks.Open "C:\Users\User\File1.xlsx": Workbooks.Open "C:\Users\User\File2.xlsm": Workbooks.Open "C:\Users\User\File3.xlsx": Workbooks.Open "C:\Users\User\File4.xlsm"
+    '[Step C] Restore – return Excel calc to automatic mode
+    Application.Calculation = xlCalculationAutomatic
+End Sub
