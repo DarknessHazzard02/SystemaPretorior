@@ -1,0 +1,12 @@
+Sub VBA_Open_All_Master_Workbooks()
+
+Application.Calculation = xlCalculationManual
+
+Workbooks.Open "C:\Users\User\File1.xlsx"
+Workbooks.Open "C:\Users\User\File2.xlsm"
+Workbooks.Open "C:\Users\User\File3.xlsx"
+Workbooks.Open "C:\Users\User\File4.xlsm"
+
+Application.Calculation = xlCalculationAutomatic
+
+End Sub
