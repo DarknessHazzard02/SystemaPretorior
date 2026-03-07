@@ -1,0 +1,12 @@
+// Made by: Hazzard 
+let 
+    Src_SP=SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/",[ApiVersion=15]),// Load files from SharePoint 
+    Filtr_XlsxAndName=Table.SelectRows(Src_SP, each Text.Contains([Name],"PowerQuery_Parameters") and Text.EndsWith([Extension],".xlsm")),// Keep only matching .xlsx files 
+    Sort_CreatedDesc_ModAsc=Table.Sort(Filtr_XlsxAndName,{{"Date created",Order.Descending},{"Date modified",Order.Ascending}}),// Sort by created desc then modified asc 
+    TakeLatest=Table.FirstN(Sort_CreatedDesc_ModAsc,1),// Keep most recent file by sort logic 
+    Xl=Excel.Workbook(TakeLatest{0}[Content],null,true),// Open workbook content 
+    FirstSheet=Xl{0}[Data],// Get first sheet data 
+    PromoteHdrs=Table.PromoteHeaders(FirstSheet,[PromoteAllScalars=true]),// Promote first row to headers 
+    Set_Types=Table.TransformColumnTypes(PromoteHdrs,{{"Product Line", type text}, {"Master Scheduler", type text}, {"Planner", type text}, {"Frame", type text}, {"DIV", type text}, {"Product Line_1", type text}, {"MainLine", type text}, {"H/V", type text}, {"OL", type text}})
+in
+    Set_Types
