@@ -1,0 +1,20 @@
+Option Explicit
+
+Sub ClearAllFiltersInAllWorkbooks()
+    Dim wb As Workbook, ws As Worksheet, lo As ListObject
+    Application.Calculation = xlCalculationManual
+    For Each wb In Application.Workbooks
+        For Each ws In wb.Worksheets
+            If ws.AutoFilterMode Then ws.AutoFilterMode = False
+            For Each lo In ws.ListObjects
+                If lo.ShowAutoFilter Then
+                    On Error Resume Next
+                    lo.AutoFilter.ShowAllData
+                    On Error GoTo 0
+                End If
+            Next lo
+        Next ws
+    Next wb
+End Sub
+
+' Made by: Hazzard

@@ -1,0 +1,20 @@
+Option Explicit
+
+Sub FormatAllSheetsInAllWorkbooks()
+    Dim wb As Workbook, ws As Worksheet
+    For Each wb In Application.Workbooks
+        For Each ws In wb.Worksheets
+            With ws.Cells
+                .HorizontalAlignment = xlCenter
+                .VerticalAlignment = xlCenter
+                .Font.Name = "Calibri"
+                .Font.Size = 10
+            End With
+            ws.Activate
+            ActiveWindow.DisplayGridlines = False
+            ws.Range("A1").Select
+        Next ws
+    Next wb
+End Sub
+
+' Made by: Hazzard

@@ -1,0 +1,16 @@
+Option Explicit
+
+Sub UnhideAllRowsAndColumnsInAllWorkbooks()
+    Dim wb As Workbook, ws As Worksheet
+    Application.Calculation = xlCalculationManual
+    For Each wb In Application.Workbooks
+        For Each ws In wb.Worksheets
+            With ws
+                .Rows.Hidden = False
+                .Columns.Hidden = False
+            End With
+        Next ws
+    Next wb
+End Sub
+
+' Made by: Hazzard

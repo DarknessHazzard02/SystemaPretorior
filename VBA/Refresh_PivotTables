@@ -1,0 +1,17 @@
+Option Explicit
+
+Sub RefreshAllPivotTablesInAllWorkbooks()
+    Dim wb As Workbook, ws As Worksheet, pt As PivotTable
+    Application.Calculation = xlCalculationAutomatic
+    For Each wb In Application.Workbooks
+        For Each ws In wb.Worksheets
+            For Each pt In ws.PivotTables
+                On Error Resume Next
+                pt.RefreshTable
+                On Error GoTo 0
+            Next pt
+        Next ws
+    Next wb
+End Sub
+
+' Made by: Hazzard

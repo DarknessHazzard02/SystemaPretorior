@@ -1,0 +1,50 @@
+Sub MergeFilesIntoSeparateSheets()
+   Dim FolderPath As String
+   Dim Filename As String
+   Dim SourceWb As Workbook
+   Dim SourceWs As Worksheet
+   Dim TargetWb As Workbook
+   Dim NewSheet As Worksheet
+   
+   With Application.FileDialog(msoFileDialogFolderPicker)
+       .Title = "Select Folder with the 6 Excel Files"
+       If .Show <> -1 Then Exit Sub
+       FolderPath = .SelectedItems(1) & "\"
+   End With
+
+   Application.screenUpdating = False
+   Application.displayAlerts = False
+
+   
+   Set TargetWb = Workbooks.Add(xlWBATWorksheet)
+   
+   
+   On Error Resume Next
+   TargetWb.Sheets(1).Delete
+   On Error GoTo 0
+   
+   
+   Filename = Dir(FolderPath & "*.xls*")
+   Do While Filename <> ""
+       Set SourceWb = Workbooks.Open(FolderPath & Filename)
+       Set SourceWs = SourceWb.Sheets(1)
+       
+   
+       SourceWs.Copy After:=TargetWb.Sheets(TargetWb.Sheets.Count)
+       
+   
+       On Error Resume Next
+       TargetWb.Sheets(TargetWb.Sheets.Count).Name = Left(Filename, InStrRev(Filename, ".") - 1)
+       On Error GoTo 0
+       
+       SourceWb.Close SaveChanges:=False
+       Filename = Dir
+   Loop
+
+   Application.displayAlerts = True
+   Application.screenUpdating = True
+   
+   
+End Sub
+
+

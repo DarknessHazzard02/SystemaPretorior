@@ -1,7 +1,0 @@
-' Made by: Hazzard
-Sub SetZoomTo85PercentInAllWorkbooks() '[Step A] Iterate workbooks & sheets – prepare to change zoom globally
-    Dim wb As Workbook, ws As Worksheet
-    '[Step B] Apply zoom – activate each sheet and set window zoom to 85%
-    For Each wb In Application.Workbooks: For Each ws In wb.Worksheets: On Error Resume Next: ws.Activate: ActiveWindow.Zoom = 85: On Error GoTo 0
-    Next ws: Next wb
-End Sub

@@ -1,0 +1,10 @@
+Option Explicit
+
+Sub VBA_Open_All_Workbooks()
+    Application.Calculation = xlCalculationManual
+    Workbooks.Open "C:\Users\NMC08UG\OneDrive - Nidec\MASTER - MASTER\MASTER\Master Motores Template.xlsm"
+    Workbooks.Open "C:\Users\NMC08UG\OneDrive - Nidec\MASTER - MASTER\Net Available\Master_Net_Avail_Echo.xlsm"
+    Application.Calculation = xlCalculationAutomatic
+End Sub
+
+' Made by: Hazzard

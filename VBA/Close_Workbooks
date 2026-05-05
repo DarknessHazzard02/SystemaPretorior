@@ -1,0 +1,9 @@
+Option Explicit
+
+Sub CloseAllOtherWorkbooks()
+    Dim wb As Workbook
+    For Each wb In Workbooks: If wb.Name <> ThisWorkbook.Name Then wb.Close SaveChanges:=True
+    Next wb
+End Sub
+
+' Made by: Hazzard
