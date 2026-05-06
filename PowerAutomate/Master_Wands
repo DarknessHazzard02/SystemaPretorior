@@ -1,4 +1,4 @@
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
 WAIT $fx'=15'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/AppsLocalLogin.jsp' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser
 WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input text \'usernameField\''] Text: $fx'NMC09S6' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
@@ -9,7 +9,7 @@ WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA
 WAIT $fx'=15'
 MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
 WAIT $fx'=15'
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC All Reports Templates.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance2
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC All Reports Templates.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance2
 WAIT $fx'=15'
 Excel.Attach DocumentName: $fx'NMC All Reports Templates.xlsx' Instance=> ExcelInstance2
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['Tab Item \'Reports Wand\'']
