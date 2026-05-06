@@ -1,0 +1,25 @@
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
+WAIT $fx'=15'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC All Reports Templates.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance2
+WAIT $fx'=15'
+Excel.Attach DocumentName: $fx'NMC All Reports Templates.xlsx' Instance=> ExcelInstance2
+Excel.RunMacro Instance: $fx'=ExcelInstance' Macro: $fx'All_Reports_Template'
+WAIT $fx'=15'
+Excel.SaveExcel.Save Instance: $fx'=ExcelInstance2'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance2'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC C15 All Jobs DFF Motores.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance5
+WAIT $fx'=15'
+Excel.Attach DocumentName: $fx'NMC C15 All Jobs DFF Motores.xlsx' Instance=> ExcelInstance5
+Excel.RunMacro Instance: $fx'=ExcelInstance' Macro: $fx'DFF_Motores'
+WAIT $fx'=15'
+Excel.SaveExcel.Save Instance: $fx'=ExcelInstance5'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance5'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance'
