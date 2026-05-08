@@ -7,7 +7,7 @@ WebAutomation.PressButton.PressButton BrowserInstance: $fx'=Oracle' Control: app
 WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/RF.jsp?function_id=29772&resp_id=55415&resp_appl_id=20267&security_group_id=0&lang_code=US&oas=JNOJRJq4WL3cmv9mEDJMkA..' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Wands
 WAIT $fx'=5'
-MouseAndKeyboard.SendKeys.FocusAndSendKeysByInstanceOrHandle WindowInstance: $fx'%Wands%' TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
+MouseAndKeyboard.SendKeys.FocusAndSendKeysByInstanceOrHandle WindowInstance: $fx'=Wands' TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
 WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_DFF_Jobs_Template_R01.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> DFF
 WAIT $fx'=5'
