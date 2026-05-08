@@ -1,27 +1,37 @@
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Automate
 WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/AppsLocalLogin.jsp' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Oracle
-WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Oracle' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input text \'usernameField\''] Text: $fx'NMC09S6' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
-WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Oracle' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input password \'passwordField\''] Text: P'AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtUNLVnzhcUCPDqp6fgDzVgQAAAACAAAAAAAQZgAAAAEAACAAAACN+3+Dqgow6DgOaM8yG38us9n/mEbMmHWSR7uWmQ/YggAAAAAOgAAAAAIAACAAAAAjo2rUFvOp1LEpwJz0OepqufDcbE2mnXSUhH0Xg95M6SAAAADb7FuYlhub6K0LP2juJlnF+WV7vFhCmIpzUz5eZ8JUsEAAAABIixLmZuUnB4YliMo++nyUbipItVTD7ASBg0mHKx6W7s8NWm5UanDJRD2Pr6bKs2ZPdHEsLsWv0DpsCQL3HBqT' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
-WebAutomation.PressButton.PressButton BrowserInstance: $fx'=Oracle' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Button \'Log In\''] WaitForPageToLoadTimeout: $fx'=60'
+@@source: 'Recorder'
+WebAutomation.LaunchEdge.AttachToEdgeByUrl TabUrl: $fx'https://akirar12prod.nidecds.com/OA_HTML/AppsLocalLogin.jsp' AttachTimeout: $fx'=10' TargetDesktop: $fx'{"DisplayName":"Local computer","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser
+@@source: 'Recorder'
+WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input text \'usernameField\''] Text: $fx'NMC09S6' UnfocusAfterPopulate: False Mode: WebAutomation.PopulateTextMode.Replace
+@@source: 'Recorder'
+WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input password \'passwordField\''] Text: P'AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAciahxCPO0k+vzVFhVsd3LgQAAAACAAAAAAAQZgAAAAEAACAAAACJl3LX66QvtZjRKbUCgc0g8k0OzgGHSbkYNwMEi1ig7gAAAAAOgAAAAAIAACAAAADSyjtmKnj/HmXIaFZTLRk71W5gG2E7VRS2SMiBGaLAsyAAAABcPPM1Mh3Xtdhf401tK7HMj9nr9ohTFCq00cOrrjjdzUAAAABwVyymCFv54RIgTs2M2Ij9ZzqpWD3TQw1wx2wR1HY8iptOjL04zbVOnzy9YtRsBb/jLdnFTeTSNh1lbLzfH33/' UnfocusAfterPopulate: False Mode: WebAutomation.PopulateTextMode.Replace
+@@source: 'Recorder'
+WebAutomation.PressButton.PressButton BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Button \'Log In\'']
 WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/RF.jsp?function_id=29772&resp_id=55415&resp_appl_id=20267&security_group_id=0&lang_code=US&oas=JNOJRJq4WL3cmv9mEDJMkA..' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Wands
 WAIT $fx'=5'
-MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
+MouseAndKeyboard.SendKeys.FocusAndSendKeysByInstanceOrHandle WindowInstance: $fx'%Wands%' TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
 WAIT $fx'=5'
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_DFF_Jobs_Template_R01.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> DFF
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Open_Jobs_Template_R01.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Jobs
 WAIT $fx'=5'
-Excel.Attach DocumentName: $fx'SCM_DFF_Jobs_Template_R01.xlsx' Instance=> DFF
+Excel.Attach DocumentName: $fx'SCM_Open_Jobs_Template_R01.xlsx' Instance=> Open_Jobs
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['Tab Item \'Reports Wand\'']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['MenuItem: More Options']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['MenuItem: Execute Workbook']
-WAIT $fx'=1200'
-Excel.SaveExcel.Save Instance: $fx'=DFF'
-Excel.CloseExcel.CloseAndSave Instance: $fx'=DFF'
-ON ERROR REPEAT 2 TIMES WAIT 10
-ON ERROR
-
-END
+WAIT $fx'=300'
+Excel.SaveExcel.Save Instance: $fx'=Open_Jobs'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=Open_Jobs'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Open_Orders_Template_R01.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Orders
+WAIT $fx'=5'
+Excel.Attach DocumentName: $fx'SCM_Open_Orders_Template_R01.xlsx' Instance=> Open_Orders
+UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['Tab Item \'Reports Wand\'']
+UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['MenuItem: More Options']
+UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['MenuItem: Execute Workbook']
+WAIT $fx'=600'
+Excel.SaveExcel.Save Instance: $fx'=Open_Orders'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=Open_Orders'
 Excel.CloseExcel.CloseAndSave Instance: $fx'=Automate'
 WebAutomation.CloseWebBrowser BrowserInstance: $fx'=Oracle'
 WebAutomation.CloseWebBrowser BrowserInstance: $fx'=Wands'

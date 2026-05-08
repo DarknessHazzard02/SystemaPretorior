@@ -1,0 +1,31 @@
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
+WAIT $fx'=5'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\MASTER\\Oracle_Wands_All_Reports.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance1
+WAIT $fx'=5'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\Items_Classification_BOM.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance2
+WAIT $fx'=5'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Net Available\\Net_Avail_Table_Alpha.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance3
+WAIT $fx'=5'
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Power_BI - Files\\Motores_BOM_Query.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance4
+WAIT $fx'=5'
+Excel.RunMacro Instance: $fx'=ExcelInstance' Macro: $fx'RefreshAllPowerQueriesInAllWorkbooks'
+WAIT $fx'=300'
+Excel.RunMacro Instance: $fx'=ExcelInstance' Macro: $fx'RefreshAllPowerQueriesInAllWorkbooks'
+WAIT $fx'=300'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance4'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance3'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance2'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance1'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance'

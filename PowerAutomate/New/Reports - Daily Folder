@@ -1,0 +1,5 @@
+DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateAndTime CurrentDateTime=> CurrentDateTime
+Text.ConvertDateTimeToText.FromCustomDateTime DateTime: CurrentDateTime CustomFormat: $'''dd-MMM-yy''' Result=> FormattedDate
+Folder.Create FolderName: FormattedDate FolderPath: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports''' Folder=> NuevaCarpeta
+Folder.GetFiles Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IncludeSubfolders: False FileFilter: $'''*.*''' FailOnAccessDenied: False SortBy1: Folder.SortBy.NoSort SortBy2: Folder.SortBy.NoSort SortBy3: Folder.SortBy.NoSort SortDescending1: False SortDescending2: False SortDescending3: False Files=> ArchivosOrigen
+File.Copy Files: ArchivosOrigen Destination: NuevaCarpeta.FullName IfFileExists: File.IfExists.Overwrite CopiedFiles=> ArchivosCopiados
