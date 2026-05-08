@@ -3,24 +3,24 @@ ON ERROR
 
 END
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://app.powerbi.com/groups/e6f7dacc-0eda-4e3b-9f36-fc34da4ea1ab/reports/33a2a250-c06b-4411-a5a0-67822d24c177/ReportSection74535024a45b83ba14c6?ctid=5dbe144b-33d6-4f65-8c82-befe5f2d5b6c&experience=power-bi' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser
-WAIT $fx'=15'
+WAIT $fx'=5'
 MouseAndKeyboard.MoveMouse X: $fx'907' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
 MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-WAIT $fx'=15'
+WAIT $fx'=5'
 MouseAndKeyboard.MoveMouse X: $fx'141' Y: $fx'227' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
 MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
 MouseAndKeyboard.MoveMouse X: $fx'1107' Y: $fx'333' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
 MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-WAIT $fx'=15'
+WAIT $fx'=5'
 @@source: 'Recorder'
 WebAutomation.Click.Click BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... e=power-bi\' 6']['Idiomatic text'] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
 @@source: 'Recorder'
 WebAutomation.Click.Click BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... e=power-bi\' 6']['Span \'Export data\''] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
 MouseAndKeyboard.MoveMouse X: $fx'1134' Y: $fx'815' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
 MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-WAIT $fx'=15'
+WAIT $fx'=5'
 WebAutomation.CloseWebBrowser BrowserInstance: $fx'=Browser'
-WAIT $fx'=15'
+WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
 @@source: 'Recorder'
 MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $fx'{LMenu}({F8})'
@@ -28,7 +28,7 @@ UIAutomation.Click.Click Element: appmask['Window \'Macro\'']['List Item \'Merge
 UIAutomation.PressButton Button: appmask['Window \'Macro\'']['Button \'Run\'']
 UIAutomation.Click.Click Element: appmask['Window \'Automate.xlsm - Excel\'']['Tree Item \'Downloads (pinned)\''] ClickType: UIAutomation.ClickType.LeftClick OffsetX: $fx'=3' OffsetY: $fx'=-3' MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter
 UIAutomation.PressButton Button: appmask['Window \'Automate.xlsm - Excel\'']['Button \'OK\'']
-WAIT $fx'=15'
+WAIT $fx'=5'
 Excel.Attach DocumentName: $fx'Sheet1' Instance=> ExcelInstance2
 Excel.CloseExcel.CloseAndSaveAs Instance: $fx'=ExcelInstance2' DocumentFormat: Excel.ExcelFormat.FromExtension DocumentPath: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\MTD_Production_Today'
 Excel.CloseExcel.CloseAndSave Instance: $fx'=ExcelInstance'

@@ -1,14 +1,14 @@
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
-WAIT $fx'=3'
+WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/AppsLocalLogin.jsp' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser
 WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input text \'usernameField\''] Text: $fx'NMC09S6' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
 WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input password \'passwordField\''] Text: P'AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtUNLVnzhcUCPDqp6fgDzVgQAAAACAAAAAAAQZgAAAAEAACAAAABMbixn1yWZetYNxCptKmXKIeGjIKu+GluGzuw5854/NQAAAAAOgAAAAAIAACAAAAAqqdykNAZIYxNEm3/LLNrHuoLfM06JXDt+4v7cdQtWtiAAAADnT4C1jejooilPmDJjpUOVbmMSbgSCGCxZHvVcc2jD0UAAAACEAk6a2EIu3qhxJR1JnvdsqJq8uydDcmuSuILEf81BDI7nnIF1PCHFE+EjrpGsl6d6wxID1IxiAHNbcJEBEIag' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
 WebAutomation.PressButton.PressButton BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Button \'Log In\''] WaitForPageToLoadTimeout: $fx'=60'
-WAIT $fx'=3'
+WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/RF.jsp?function_id=29772&resp_id=55415&resp_appl_id=20267&security_group_id=0&lang_code=US&oas=JNOJRJq4WL3cmv9mEDJMkA..' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser1
-WAIT $fx'=3'
+WAIT $fx'=5'
 MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
-WAIT $fx'=10'
+WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC C15 All Jobs DFF Motores.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance5
 WAIT $fx'=5'
 Excel.Attach DocumentName: $fx'NMC C15 All Jobs DFF Motores.xlsx' Instance=> ExcelInstance5

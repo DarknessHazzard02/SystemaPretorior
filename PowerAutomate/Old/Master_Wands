@@ -1,16 +1,16 @@
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance
-WAIT $fx'=15'
+WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/AppsLocalLogin.jsp' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser
 WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input text \'usernameField\''] Text: $fx'NMC09S6' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
 WebAutomation.PopulateTextField.PopulateTextFieldUsePhysicalKeyboard BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Input password \'passwordField\''] Text: P'AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtUNLVnzhcUCPDqp6fgDzVgQAAAACAAAAAAAQZgAAAAEAACAAAACN+3+Dqgow6DgOaM8yG38us9n/mEbMmHWSR7uWmQ/YggAAAAAOgAAAAAIAACAAAAAjo2rUFvOp1LEpwJz0OepqufDcbE2mnXSUhH0Xg95M6SAAAADb7FuYlhub6K0LP2juJlnF+WV7vFhCmIpzUz5eZ8JUsEAAAABIixLmZuUnB4YliMo++nyUbipItVTD7ASBg0mHKx6W7s8NWm5UanDJRD2Pr6bKs2ZPdHEsLsWv0DpsCQL3HBqT' Mode: WebAutomation.PopulateTextMode.Replace UnfocusAfterPopulate: False WaitForPageToLoadTimeout: $fx'=60'
 WebAutomation.PressButton.PressButton BrowserInstance: $fx'=Browser' Control: appmask['Web Page \'h ... lLogin.jsp\'']['Button \'Log In\''] WaitForPageToLoadTimeout: $fx'=60'
-WAIT $fx'=15'
+WAIT $fx'=5'
 WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://akirar12prod.nidecds.com/OA_HTML/RF.jsp?function_id=29772&resp_id=55415&resp_appl_id=20267&security_group_id=0&lang_code=US&oas=JNOJRJq4WL3cmv9mEDJMkA..' WindowState: WebAutomation.BrowserWindowState.Maximized ClearCache: False ClearCookies: False WaitForPageToLoadTimeout: $fx'=60' Timeout: $fx'=60' PiPUserDataFolderMode: WebAutomation.PiPUserDataFolderModeEnum.AutomaticProfile TargetDesktop: $fx'{"DisplayName":"Equipo local","Route":{"ServerType":"Local","ServerAddress":""},"DesktopType":"local"}' BrowserInstance=> Browser1
-WAIT $fx'=15'
+WAIT $fx'=5'
 MouseAndKeyboard.SendKeys.FocusAndSendKeys TextToSend: $fx'{Alt}({O})' DelayBetweenKeystrokes: $fx'10' SendTextAsHardwareKeys: False
-WAIT $fx'=15'
+WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\SRVC_ENSAMBLE\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC All Reports Templates.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> ExcelInstance2
-WAIT $fx'=15'
+WAIT $fx'=5'
 Excel.Attach DocumentName: $fx'NMC All Reports Templates.xlsx' Instance=> ExcelInstance2
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['Tab Item \'Reports Wand\'']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\'']['MenuItem: More Options']
