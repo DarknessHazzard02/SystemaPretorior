@@ -1,0 +1,3 @@
+Folder.GetFiles Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\PLANNING NEW - PLANNING NEW\\Planning Reports\\Secuencias''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.LastModified SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
+File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Secuencias_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
