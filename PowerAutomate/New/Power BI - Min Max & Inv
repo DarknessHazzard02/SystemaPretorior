@@ -80,6 +80,10 @@ File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (2).xlsx' Destination: 
 File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data (2).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Inventory_InTransit_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
 File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (3).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data (3).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Inventory_NotNettable_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+Folder.Delete Folder: $fx'C:\\Users\\NMC08UG\\Downloads'
+ON ERROR
+
+END
 
 # [ControlRepository][PowerAutomateDesktop]
 
