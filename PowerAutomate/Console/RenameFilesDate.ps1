@@ -13,7 +13,7 @@ foreach ($Folder in $DateFolders) {
         $DateStamp = $ParsedDate.ToString("yyyyMMdd")
     }
     catch {
-        Write-Warning "⚠️ Skipping invalid folder: $($Folder.FullName)"
+        Write-Warning " Skipping invalid folder: $($Folder.FullName)"
         continue
     }
 
@@ -26,5 +26,5 @@ foreach ($Folder in $DateFolders) {
         Rename-Item $_.FullName -NewName $NewName
     }
 
-    Write-Output "✅ Processed: $($Folder.FullName) → $DateStamp"
+    Write-Output " Processed: $($Folder.FullName) → $DateStamp"
 }
