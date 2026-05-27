@@ -6,22 +6,22 @@ WebAutomation.LaunchEdge.LaunchEdge Url: $fx'https://app.powerbi.com/groups/e6f7
 WAIT $fx'=5'
 MouseAndKeyboard.MoveMouse X: $fx'907' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
 MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE WAIT $fx'=5'
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'924' Y: $fx'481' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'934' Y: $fx'480' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'944' Y: $fx'482' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'1275' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE WAIT $fx'=5'
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'1275' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
-DISABLE WebAutomation.Click.Click BrowserInstance: $fx'=PowerBI' Control: appmask['Web Page \'h ... e=power-bi\'']['Idiomatic text'] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
-DISABLE WebAutomation.Click.Click BrowserInstance: $fx'=PowerBI' Control: appmask['Web Page \'h ... e=power-bi\'']['Span \'Export data\''] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
-DISABLE MouseAndKeyboard.MoveMouse X: $fx'1170' Y: $fx'761' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
-DISABLE MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+WAIT $fx'=5'
+MouseAndKeyboard.MoveMouse X: $fx'924' Y: $fx'481' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+MouseAndKeyboard.MoveMouse X: $fx'934' Y: $fx'480' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+MouseAndKeyboard.MoveMouse X: $fx'944' Y: $fx'482' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+MouseAndKeyboard.MoveMouse X: $fx'1275' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+WAIT $fx'=5'
+MouseAndKeyboard.MoveMouse X: $fx'1275' Y: $fx'472' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
+WebAutomation.Click.Click BrowserInstance: $fx'=PowerBI' Control: appmask['Web Page \'h ... e=power-bi\'']['Idiomatic text'] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
+WebAutomation.Click.Click BrowserInstance: $fx'=PowerBI' Control: appmask['Web Page \'h ... e=power-bi\'']['Span \'Export data\''] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
+MouseAndKeyboard.MoveMouse X: $fx'1170' Y: $fx'761' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
+MouseAndKeyboard.SendMouseClick.Click ClickType: MouseAndKeyboard.MouseClickType.LeftClick MillisecondsDelay: $fx'=0'
 DISABLE WebAutomation.Click.Click BrowserInstance: $fx'=PowerBI' Control: appmask['Web Page \'h ... e=power-bi\'']['Span \'Jobs\' 2'] ClickType: WebAutomation.ClickType.LeftClick MouseClick: True
 DISABLE WAIT $fx'=5'
 DISABLE MouseAndKeyboard.MoveMouse X: $fx'1295' Y: $fx'406' RelativeTo: MouseAndKeyboard.PositionRelativeTo.Screen MovementStyle: MouseAndKeyboard.MovementStyle.Instant
@@ -72,14 +72,16 @@ WAIT $fx'=5'
 WAIT $fx'=5'
 WebAutomation.CloseWebBrowser BrowserInstance: $fx'=PowerBI'
 WAIT $fx'=5'
-File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data.xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data.xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_MinMax_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
-File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (1).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data (1).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Inventory_OnHand_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
-File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (2).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data (2).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Inventory_InTransit_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
-File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (3).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\data (3).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Inventory_NotNettable_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data.xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\data.xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\SCM_NetAvail_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (1).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\data (1).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\SCM_MinMax_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (2).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\data (2).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\SCM_Inventory_OnHand_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (3).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\data (3).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\SCM_Inventory_InTransit_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+File.Copy Files: $fx'C:\\Users\\NMC08UG\\Downloads\\data (4).xlsx' Destination: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\data (4).xlsx' NewName: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail\\SCM_Inventory_NotNettable_Template_R01' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
 Folder.Delete Folder: $fx'C:\\Users\\NMC08UG\\Downloads'
 ON ERROR
 

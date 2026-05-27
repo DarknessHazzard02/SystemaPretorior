@@ -12,7 +12,7 @@ MouseAndKeyboard.SendKeys.FocusAndSendKeysByInstanceOrHandle WindowInstance: $fx
 WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_DFF_Jobs_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> DFF
 WAIT $fx'=5'
-Excel.Attach DocumentName: $fx'SCM_DFF_Jobs_Template_R01.xlsx' Instance=> DFF
+Excel.Attach DocumentName: $fx'NMC_DFF_Jobs_Template.xlsx' Instance=> DFF
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['Tab Item \'Reports Wand\'']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: More Options']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: Execute Workbook']

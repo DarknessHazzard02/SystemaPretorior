@@ -12,7 +12,7 @@ MouseAndKeyboard.SendKeys.FocusAndSendKeysByInstanceOrHandle WindowInstance: $fx
 WAIT $fx'=5'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_Open_Jobs_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Jobs
 WAIT $fx'=5'
-Excel.Attach DocumentName: $fx'SCM_Open_Jobs_Template_R01.xlsx' Instance=> Open_Jobs
+Excel.Attach DocumentName: $fx'NMC_Open_Jobs_Template.xlsx' Instance=> Open_Jobs
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['Tab Item \'Reports Wand\'']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: More Options']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: Execute Workbook']
@@ -21,7 +21,7 @@ Excel.SaveExcel.Save Instance: $fx'=Open_Jobs'
 Excel.CloseExcel.CloseAndSave Instance: $fx'=Open_Jobs'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_Open_Orders_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Orders
 WAIT $fx'=5'
-Excel.Attach DocumentName: $fx'SCM_Open_Orders_Template_R01.xlsx' Instance=> Open_Orders
+Excel.Attach DocumentName: $fx'NMC_Open_Orders_Template.xlsx' Instance=> Open_Orders
 UIAutomation.SelectTab Tab: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['Tab Item \'Reports Wand\'']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: More Options']
 UIAutomation.SelectMenuOption Control: appmask['Window \'NMC All Reports Template.xlsx - Excel\' 3']['MenuItem: Execute Workbook']
