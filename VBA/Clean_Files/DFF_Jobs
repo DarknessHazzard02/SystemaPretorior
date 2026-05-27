@@ -1,0 +1,11 @@
+Sub DFF_Jobs()
+
+    Windows("NMC_DFF_Jobs_Template.xlsx").Activate
+    Range("B7:U150000").Select
+    Range("B7").Activate
+    Selection.Replace What:="", Replacement:="Null", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False, FormulaVersion:=xlReplaceFormula2
+        Application.Calculation = xlCalculationAutomatic
+        
+End Sub
