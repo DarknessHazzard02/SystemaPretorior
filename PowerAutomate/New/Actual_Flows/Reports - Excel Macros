@@ -1,23 +1,34 @@
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Automate
 WAIT $fx'=15'
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC All Reports Templates.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> All_Reports
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_Open_Jobs_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Jobs
 WAIT $fx'=15'
-Excel.Attach DocumentName: $fx'NMC All Reports Templates.xlsx' Instance=> All_Reports
-Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'All_Reports_Template'
+Excel.Attach DocumentName: $fx'NMC_Open_Jobs_Template.xlsx' Instance=> Open_Jobs
+Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'Open_Jobs'
 WAIT $fx'=15'
-Excel.SaveExcel.Save Instance: $fx'=All_Reports'
-Excel.CloseExcel.CloseAndSave Instance: $fx'=All_Reports'
+Excel.SaveExcel.Save Instance: $fx'=Open_Jobs'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=Open_Jobs'
 ON ERROR REPEAT 2 TIMES WAIT 10
 ON ERROR
 
 END
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC C15 All Jobs DFF Motores.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> DFF
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_Open_Orders_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Open_Orders
 WAIT $fx'=15'
-Excel.Attach DocumentName: $fx'NMC C15 All Jobs DFF Motores.xlsx' Instance=> DFF
-Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'DFF_Motores'
+Excel.Attach DocumentName: $fx'NMC_Open_Orders_Template.xlsx' Instance=> Open_Orders
+Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'Open_Orders'
 WAIT $fx'=15'
-Excel.SaveExcel.Save Instance: $fx'=DFF'
-Excel.CloseExcel.CloseAndSave Instance: $fx'=DFF'
+Excel.SaveExcel.Save Instance: $fx'=Open_Orders'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=Open_Orders'
+ON ERROR REPEAT 2 TIMES WAIT 10
+ON ERROR
+
+END
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports\\NMC_DFF_Jobs_Template.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> DFF_Jobs
+WAIT $fx'=15'
+Excel.Attach DocumentName: $fx'NMC_DFF_Jobs_Template.xlsx' Instance=> DFF_Jobs
+Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'DFF_Jobs'
+WAIT $fx'=15'
+Excel.SaveExcel.Save Instance: $fx'=DFF_Jobs'
+Excel.CloseExcel.CloseAndSave Instance: $fx'=DFF_Jobs'
 ON ERROR REPEAT 2 TIMES WAIT 10
 ON ERROR
 

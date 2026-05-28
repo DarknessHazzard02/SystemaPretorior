@@ -1,1 +1,48 @@
-Code1
+let
+    Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
+    FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),
+    ReportsFolder = Table.SelectRows(FolderColumns, each Text.Contains([Folder Path], "/NetAvail/") and ([Extension] = ".xlsx")),
+    DateSort = Table.Sort(ReportsFolder,{{"Date modified", Order.Descending}}),
+    FileName = Table.SelectRows(DateSort, each Text.Contains([Name], "InTransit")),
+    LatestFile=Table.Max(FileName,"Date modified"),
+    Import=Excel.Workbook(LatestFile[Content],null,true),
+    ExcelSheet=Import{0}[Data],
+    Headers = Table.PromoteHeaders(ExcelSheet, [PromoteAllScalars=true]),
+    Type = Table.TransformColumnTypes(Headers,{{"Inventory Item", type text}})
+in
+    Type
+
+
+
+    // Made by: Hazzard
+let
+SharePointSource=SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/",[ApiVersion=15]),
+FilteredExcelFiles=Table.SelectRows(SharePointSource,each Text.Contains([Name],"Net_Avail_Report") and [Extension]=".xlsx"),
+LatestFileRecord=Table.Max(FilteredExcelFiles,"Date modified"),
+ExcelWorkbook=Excel.Workbook(LatestFileRecord[Content],null,true),
+SelectedWorksheet=ExcelWorkbook{4}[Data],
+PromotedHeaders=Table.PromoteHeaders(SelectedWorksheet,[PromoteAllScalars=true]),
+RemovedBottomRows=Table.RemoveLastN(PromotedHeaders,3),
+RenamedColumns=Table.RenameColumns(RemovedBottomRows,{{"Inventory Item","Item"},{"On Hand","On Hand Qty"}}),
+SetColumnTypes=Table.TransformColumnTypes(RenamedColumns,{{"Item",type text},{"On Hand Qty",Int64.Type},{"Org",type text}}),
+AddedNewItem=Table.AddColumn(SetColumnTypes,"New Item",each let v=try Number.From([Item]) in if v[HasError] then [Item] else Text.From(v[Value]),type text),
+RemovedOriginalItem=Table.RemoveColumns(AddedNewItem,{"Item"}),
+AddedItemOrg=Table.AddColumn(RemovedOriginalItem,"Item&Org",each [New Item]&"-"&[Org],type text),
+ReorderedColumns=Table.ReorderColumns(AddedItemOrg,{"New Item","On Hand Qty","Org","Item&Org"}),
+SortedFinalTable=Table.Sort(ReorderedColumns,{{"New Item",Order.Ascending}})
+in
+SortedFinalTable
+
+let
+    Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
+    FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),
+    ReportsFolder = Table.SelectRows(FolderColumns, each Text.Contains([Folder Path], "/Files Templates/") and ([Extension] = ".xlsx")),
+    DateSort = Table.Sort(ReportsFolder,{{"Date modified", Order.Descending}}),
+    FileName = Table.SelectRows(DateSort, each Text.Contains([Name], "Product_Line")),
+    LatestFile=Table.Max(FileName,"Date modified"),
+    Import=Excel.Workbook(LatestFile[Content],null,true),
+    ExcelSheet=Import{0}[Data],
+    Headers = Table.PromoteHeaders(ExcelSheet, [PromoteAllScalars=true]),
+    Type = Table.TransformColumnTypes(Headers,{{"Production_Line", type text}, {"Frame", type text}, {"DIV", type text}, {"Master", type text}, {"Planner", type text}, {"Line_Class", type text}, {"Set_Ups", type number}})
+in
+    Type
