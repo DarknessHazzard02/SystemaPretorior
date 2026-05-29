@@ -1,0 +1,16 @@
+let
+    Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
+    FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),
+    ReportsFolder = Table.SelectRows(FolderColumns, each Text.Contains([Folder Path], "/Reports/") and ([Extension] = ".xlsx")),
+    DateSort = Table.Sort(ReportsFolder,{{"Date modified", Order.Descending}}),
+    FileName = Table.SelectRows(DateSort, each Text.Contains([Name], "NMC_Open_Orders")),
+    LatestFile=Table.Max(FileName,"Date modified"),
+    Import=Excel.Workbook(LatestFile[Content],null,true),
+    ExcelSheet=Import{0}[Data],
+    TopRows=Table.Skip(ExcelSheet,6),
+    ExcessColumsn = Table.RemoveColumns(TopRows,{"Column1"}),
+    Headers = Table.PromoteHeaders(ExcessColumsn, [PromoteAllScalars=true]),
+    Type = Table.TransformColumnTypes(Headers,{{"ITEM_NUMBER", type text}, {"DESCRIPTION", type text}, {"PRODUCTION_LINE", type text}, {"CUSTOMER", type text}, {"REQUEST_DATE", type date}, {"SCHEDULE_SHIP_DATE", type date}, {"PROMISE_DATE", type date}, {"SCHEDULE_ARRIVAL_DATE", type date}, {"DATE_ORDERED", type date}, {"RELEASE_DATE", type date}, {"REMAINING_QTY", Int64.Type}, {"ORDER_STATUS", type text}, {"HOLD_FLAG", type text}, {"ITEM_TYPE", type text}, {"ORGANIZATION_CODE", type text}, {"ORDER_NUMBER", type number}, {"ORDER_LINES", type number}, {"ORDER_TYPE", type text}, {"CUSTOMER_PURCHASE_ORDER_NUMB", type text}, {"CUSTOMER_NUMBER", type number}, {"UNIT_SELLING_PRICE", Currency.Type}, {"EXT_PRICE", Currency.Type}}),
+    Empty = Table.SelectRows(Type, each [ITEM_NUMBER] <> null and [ITEM_NUMBER] <> "")
+in
+    Empty

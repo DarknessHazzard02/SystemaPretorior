@@ -1,0 +1,15 @@
+let
+    Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
+    FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),
+    ReportsFolder = Table.SelectRows(FolderColumns, each Text.Contains([Folder Path], "/Reports/") and ([Extension] = ".xlsx")),
+    DateSort = Table.Sort(ReportsFolder,{{"Date modified", Order.Descending}}),
+    FileName = Table.SelectRows(DateSort, each Text.Contains([Name], "NMC_Open_Jobs")),
+    LatestFile=Table.Max(FileName,"Date modified"),
+    Import=Excel.Workbook(LatestFile[Content],null,true),
+    ExcelSheet=Import{0}[Data],
+    TopRows=Table.Skip(ExcelSheet,6),
+    Headers = Table.PromoteHeaders(TopRows, [PromoteAllScalars=true]),
+    Type = Table.TransformColumnTypes(Headers,{{"DATE_RELEASED", type date}, {"WIP/JOB", type text}, {"ITEM_NUMBER", type text}, {"PRODUCTION_LINE", type text}, {"STACK", type number}, {"SPEED", Int64.Type}, {"START_DATE", type date}, {"COMPLETION_DATE", type date}, {"FIRST_COMPLETION_DATE", type date}, {"REVISED_SCHEDULED_DATE", type date}, {"START_QTY", Int64.Type}, {"COMPLETED_QTY", Int64.Type}, {"REMAINING_QTY", Int64.Type}, {"ITEM_TYPE", type text}, {"ISO/SO", type text}, {"DESCRIPTION", type text}, {"MOTOR_TYPE", type text}, {"ORDER_STATUS", type text}, {"LAST_UPDATE_DATE", type date}, {"COMMENT", type text}, {"ITEM_STATUS", type text}, {"CLASSIFICATION", type text}, {"CONSTRUCTION_MATERIAL", type text}, {"DESCRIPTION_1", type text}, {"MFG_ORDER_TYPE", type text}, {"ORGANIZATION_NAME", type text}}),
+    Empty = Table.SelectRows(Type, each [ITEM_NUMBER] <> null and [ITEM_NUMBER] <> "")
+in
+    Empty
