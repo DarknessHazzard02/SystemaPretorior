@@ -1,0 +1,13 @@
+let
+    Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
+    FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),
+    ReportsFolder = Table.SelectRows(FolderColumns, each Text.Contains([Folder Path], "/Files Templates/") and ([Extension] = ".xlsx")),
+    DateSort = Table.Sort(ReportsFolder,{{"Date modified", Order.Descending}}),
+    FileName = Table.SelectRows(DateSort, each Text.Contains([Name], "Product_Line")),
+    LatestFile=Table.Max(FileName,"Date modified"),
+    Import=Excel.Workbook(LatestFile[Content],null,true),
+    ExcelSheet=Import{0}[Data],
+    Headers = Table.PromoteHeaders(ExcelSheet, [PromoteAllScalars=true]),
+    Type = Table.TransformColumnTypes(Headers,{{"Production_Line", type text}, {"Frame", type text}, {"DIV", type text}, {"Master", type text}, {"Planner", type text}, {"Line_Class", type text}, {"Set_Ups", type number}})
+in
+    Type

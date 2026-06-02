@@ -11,6 +11,38 @@ let
     ExcessColumsn = Table.RemoveColumns(TopRows,{"Column1"}),
     Headers = Table.PromoteHeaders(ExcessColumsn, [PromoteAllScalars=true]),
     Type = Table.TransformColumnTypes(Headers,{{"ITEM_NUMBER", type text}, {"DESCRIPTION", type text}, {"PRODUCTION_LINE", type text}, {"CUSTOMER", type text}, {"REQUEST_DATE", type date}, {"SCHEDULE_SHIP_DATE", type date}, {"PROMISE_DATE", type date}, {"SCHEDULE_ARRIVAL_DATE", type date}, {"DATE_ORDERED", type date}, {"RELEASE_DATE", type date}, {"REMAINING_QTY", Int64.Type}, {"ORDER_STATUS", type text}, {"HOLD_FLAG", type text}, {"ITEM_TYPE", type text}, {"ORGANIZATION_CODE", type text}, {"ORDER_NUMBER", type number}, {"ORDER_LINES", type number}, {"ORDER_TYPE", type text}, {"CUSTOMER_PURCHASE_ORDER_NUMB", type text}, {"CUSTOMER_NUMBER", type number}, {"UNIT_SELLING_PRICE", Currency.Type}, {"EXT_PRICE", Currency.Type}}),
-    Empty = Table.SelectRows(Type, each [ITEM_NUMBER] <> null and [ITEM_NUMBER] <> "")
+    Join = Table.AddColumn(Type, "ISO&Line", each Text.From([ORDER_NUMBER]) & "-"& Text.From([ORDER_LINES]),type text),
+    Delimiter = Table.AddColumn(Join, "ISO/SO", each Text.BeforeDelimiter([#"ISO&Line"],"."), type text),
+    Order_Class = Table.AddColumn(Delimiter, "Internal/SO", each let
+        cust = if [CUSTOMER] = null then "" else [CUSTOMER],
+        ord = if [ORDER_TYPE] = null then "" else [ORDER_TYPE]
+    in
+        if Text.Contains(ord, "Internal", Comparer.OrdinalIgnoreCase) 
+            and Text.Contains(cust, "Internal", Comparer.OrdinalIgnoreCase) then "Internal"
+        else "Sales Order",type text),
+    Dest = Table.AddColumn(Order_Class, "Destination", each let
+        cus = if [CUSTOMER] = null then "" else [CUSTOMER],
+        ino = [#"Internal/SO"],
+        org = [ORGANIZATION_CODE],
+
+        hasInternal = Text.PositionOf(cus, "Internal", Occurrence.First),
+
+        codeStart = 
+            if hasInternal >= 0 then
+                Text.PositionOf(cus, " ", hasInternal) + 1
+            else
+                -1,
+
+        extractedCode =
+            if codeStart > 0 and Text.Length(cus) >= codeStart + 2 then
+                Text.Middle(cus, codeStart, 3)
+            else
+                null
+    in
+        if Text.Contains(cus, "Mena", Comparer.OrdinalIgnoreCase) then "C16"
+        else if ino = "Internal" and extractedCode <> null then extractedCode
+        else org, type text),
+    Reorder = Table.ReorderColumns(Dest,{"ISO/SO", "ITEM_NUMBER", "DESCRIPTION", "PRODUCTION_LINE", "CUSTOMER", "Destination", "REQUEST_DATE", "SCHEDULE_SHIP_DATE", "PROMISE_DATE", "SCHEDULE_ARRIVAL_DATE", "DATE_ORDERED", "RELEASE_DATE", "REMAINING_QTY", "ORDER_STATUS", "HOLD_FLAG", "ITEM_TYPE", "ORGANIZATION_CODE", "ORDER_NUMBER", "ORDER_LINES", "ORDER_TYPE", "CUSTOMER_PURCHASE_ORDER_NUMB", "CUSTOMER_NUMBER", "UNIT_SELLING_PRICE", "EXT_PRICE", "ISO&Line", "Internal/SO"}),
+    ReplaceNull = Table.ReplaceValue(Reorder,null,"Null",Replacer.ReplaceValue,{"ITEM_NUMBER", "DESCRIPTION", "PRODUCTION_LINE", "CUSTOMER", "REQUEST_DATE", "SCHEDULE_SHIP_DATE", "PROMISE_DATE", "SCHEDULE_ARRIVAL_DATE", "DATE_ORDERED", "RELEASE_DATE", "REMAINING_QTY", "ORDER_STATUS", "HOLD_FLAG", "ITEM_TYPE", "ORGANIZATION_CODE", "ORDER_NUMBER", "ORDER_LINES", "ORDER_TYPE", "CUSTOMER_PURCHASE_ORDER_NUMB", "CUSTOMER_NUMBER", "UNIT_SELLING_PRICE", "EXT_PRICE"})
 in
-    Empty
+    ReplaceNull
