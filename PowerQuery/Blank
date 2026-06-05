@@ -1,0 +1,49 @@
+let
+    Source = Secuencias,
+    #"Removed Other Columns" = Table.SelectColumns(Source,{"idorden","idmfac","model","orden","cantorig","prioridade","stack","lineaemb","lineaens","motores","prodmot","output","prodx78","dispx78","prods25c","prodx27i","prodx69","prodx73","prodx74","prodmisc","prodx59","x83p","notas2","notaskit","banda","comp_part","notalrx73","x27","c57","flecha","diametro","s33_1","s33_2","s33_3","switch","z04","nom_corto","b35_2","b85_1","c63_1","c63_2","c64_1","c64_2","b90","al1","al2","al3","al4","al5","al6"}),
+    
+    #"Merged Queries" = Table.NestedJoin(#"Removed Other Columns", {"model"}, Overspray, {"Parent"}, "Overspray", JoinKind.LeftOuter),
+    #"Expanded Overspray" = Table.ExpandTableColumn(#"Merged Queries", "Overspray", {"Descripction "}, {"Overspray"}),
+
+    #"Added Custom" = Table.AddColumn(#"Expanded Overspray", "Padmill", each let 
+        pad1 = "8023960001",
+        pad2 = "802552ZZ01",
+        pad3 = "802552ZZ02",
+        s331 = if [s33_1] = null then "" else [s33_1],
+        s332 = if [s33_2] = null then "" else [s33_2],
+        s333 = if [s33_3] = null then "" else [s33_3],
+        join = s331 & "-" & s332 & "-" & s333
+    in
+        if Text.Contains(join,pad1) then "Padmill" 
+        else if Text.Contains(join,pad2) then "Padmill" 
+        else if Text.Contains(join,pad3) then "Padmill" 
+        else null, type text),
+
+    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Wire", each Text.Combine(
+        List.Select({[al1],[al2],[al3],[al4],[al5],[al6]}, each _ <> null and _ <> ""),
+        " | "
+    ),type text),
+
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom1",{{"idorden", Int64.Type}, {"idmfac", type text}, {"model", type text}, {"orden", type date}, {"cantorig", Int64.Type}, {"prioridade", Int64.Type}, {"stack", type text}, {"lineaemb", Int64.Type}, {"lineaens", Int64.Type}, {"motores", Int64.Type}, {"prodmot", Int64.Type}, {"output", Int64.Type}, {"prodx78", Int64.Type}, {"dispx78", Int64.Type}, {"prodx73", Int64.Type}, {"prodx69", Int64.Type}, {"prodx74", Int64.Type}, {"prodmisc", Int64.Type}, {"prods25c", Int64.Type}, {"prodx27i", Int64.Type}, {"notas2", type text}, {"notaskit", type text}, {"banda", type text}, {"comp_part", type text}, {"notalrx73", type text}, {"x27", type text}, {"c57", type text}, {"flecha", type text}, {"diametro", type text}, {"s33_1", type text}, {"s33_2", type text}, {"s33_3", type text}, {"switch", type text}, {"z04", type text}, {"nom_corto", type text}, {"b35_2", type text}, {"b85_1", type text}, {"c63_1", type text}, {"c63_2", type text}, {"c64_1", type text}, {"c64_2", type text}, {"b90", type text}, {"al1", type text}, {"al2", type text}, {"al3", type text}, {"al4", type text}, {"al5", type text}, {"al6", type text}, {"Overspray", type text}, {"x83p", Int64.Type}, {"prodx59", Int64.Type}}),
+
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"al1","al2","al3","al4","al5","al6"}),
+
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{
+        {"idorden","IDORDEN"},{"idmfac","WIP"},{"model","MODEL"},{"orden","FECHA"},
+        {"cantorig","CANTORIG"},{"prioridade","PRIORIDADE"},{"stack","STACK"},
+        {"lineaemb","LINEAEMB"},{"lineaens","LINEAENS"},{"motores","MOTORES"},
+        {"prodmot","PRODMOT"},{"output","OUTPUT"},{"prodx78","X78"},{"dispx78","DX78"},
+        {"prodx73","X73"},{"prodx69","X69"},{"prodx74","X74"},{"prodmisc","MISC"},
+        {"prods25c","PS25"},{"prodx27i","PX27"},{"prodx59","X59"},{"x83p","X83"},{"notas2","NOTAS LR"},
+        {"notaskit","NOTASKIT"},{"banda","BANDA"},{"comp_part","FRAME"},
+        {"notalrx73","NOTALRX73"},{"x27","X27"},{"c57","C57"},{"flecha","FLECHA"},
+        {"diametro","DIAMETRO"},{"s33_1","S33_1"},{"s33_2","S33_2"},{"s33_3","S33_3"},
+        {"switch","SWITCH"},{"z04","Z04"},{"nom_corto","NOM_CORTO"},
+        {"b35_2","B35_2"},{"b85_1","B85_1"},{"c63_1","C63_1"},{"c63_2","C63_2"},
+        {"c64_1","C64_1"},{"c64_2","C64_2"},{"b90","B90"},
+        {"Overspray","OVERSPRAY"},{"Padmill","PADMILL"},{"Wire","WIRE"}
+    }, MissingField.Ignore),
+
+    #"Sorted Rows" = Table.Sort(#"Renamed Columns",{{"PRIORIDADE", Order.Ascending}})
+in
+    #"Sorted Rows"
