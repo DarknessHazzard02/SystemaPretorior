@@ -39,3 +39,6 @@ excel.Quit
 Set workbook = Nothing
 Set excel = Nothing''' ScriptOutput=> VBScriptOutput
 Folder.Copy Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFolderExists: Folder.IfExists.Overwrite CopiedFolder=> CopiedFolder
+File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_BOM_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_Secuencias_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
