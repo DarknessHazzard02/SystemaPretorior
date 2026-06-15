@@ -8,6 +8,9 @@ Folder.GetFiles Folder: $'''J:\\MS system\\MPS''' FileFilter: $'''*''' IncludeSu
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Serial_Numbers_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
 File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+Folder.GetFiles Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\S&OP - Past Due SO\\Daily Past Due Report''' FileFilter: $'''*''' IncludeSubfolders: True FailOnAccessDenied: True SortBy1: Folder.SortBy.CreationTime SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
+File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Past_Due_Open_Orders_Template''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
 Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
 
 Set excel = CreateObject(\"Excel.Application\")
@@ -32,6 +35,21 @@ excel.DisplayAlerts = False
 Set workbook = excel.Workbooks.Open(\"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Secuencias_Template_R01.xls\")
 
 workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles\\SCM_Secuencias_Template_R01.csv\", 6
+
+workbook.Close False
+excel.Quit
+
+Set workbook = Nothing
+Set excel = Nothing''' ScriptOutput=> VBScriptOutput
+Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
+
+Set excel = CreateObject(\"Excel.Application\")
+excel.Visible = False
+excel.DisplayAlerts = False
+
+Set workbook = excel.Workbooks.Open(\"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Past_Due_Open_Orders_Template.xlsb\")
+
+workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles\\SCM_Past_Due_Open_Orders_Template.xlsm\", 52
 
 workbook.Close False
 excel.Quit
