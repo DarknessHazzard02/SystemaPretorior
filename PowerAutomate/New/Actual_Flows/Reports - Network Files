@@ -7,7 +7,7 @@ File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_BOM_Template_R01''' 
 Folder.GetFiles Folder: $'''J:\\MS system\\MPS''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.CreationTime SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Serial_Numbers_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
-File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
 
 Set excel = CreateObject(\"Excel.Application\")
@@ -16,7 +16,7 @@ excel.DisplayAlerts = False
 
 Set workbook = excel.Workbooks.Open(\"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_BOM_Template_R01.xls\")
 
-workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_BOM_Template_R01.csv\", 6
+workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles\\SCM_BOM_Template_R01.csv\", 6
 
 workbook.Close False
 excel.Quit
@@ -31,7 +31,7 @@ excel.DisplayAlerts = False
 
 Set workbook = excel.Workbooks.Open(\"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Secuencias_Template_R01.xls\")
 
-workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_Secuencias_Template_R01.csv\", 6
+workbook.SaveAs \"C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles\\SCM_Secuencias_Template_R01.csv\", 6
 
 workbook.Close False
 excel.Quit
@@ -39,6 +39,4 @@ excel.Quit
 Set workbook = Nothing
 Set excel = Nothing''' ScriptOutput=> VBScriptOutput
 Folder.Copy Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFolderExists: Folder.IfExists.Overwrite CopiedFolder=> CopiedFolder
-File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_BOM_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_Secuencias_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
-File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+Folder.Copy Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFolderExists: Folder.IfExists.Overwrite CopiedFolder=> CopiedFolder
