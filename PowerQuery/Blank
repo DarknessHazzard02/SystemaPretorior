@@ -7,7 +7,8 @@ invoh = [On Hand],
 novih = [Not Nettable]
 in 
 if (invoh + novih) < 0 then 0 else (invoh + novih), Int64.Type),
-    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom",{"Item&Org", "New Item", "Org", "On Hand", "In Transit", "Total Available", "Not Nettable"}),
-    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"On Hand", "In Transit"})
+    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom",{"New Item", "Total Available", "In Transit", "Org", "Item&Org", "On Hand", "Not Nettable"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"On Hand", "Not Nettable"}),
+    #"Added Custom1" = Table.AddColumn(#"Removed Columns", "Total Inventory", each [Total Available] + [In Transit], Int64.Type)
 in
-    #"Removed Columns"
+    #"Added Custom1"
