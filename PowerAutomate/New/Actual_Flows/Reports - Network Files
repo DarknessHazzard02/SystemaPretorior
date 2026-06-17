@@ -1,16 +1,20 @@
 Folder.GetFiles Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\PLANNING NEW - PLANNING NEW\\Planning Reports\\Secuencias''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.LastModified SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Secuencias_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+WAIT 5
 Folder.GetFiles Folder: $'''J:\\Compras IHP''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.CreationTime SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_BOM_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+WAIT 5
 Folder.GetFiles Folder: $'''J:\\MS system\\MPS''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.CreationTime SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Serial_Numbers_Template_R01''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
 File.Copy Files: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files\\SCM_Serial_Numbers_Template_R01.csv''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
+WAIT 5
 Folder.GetFiles Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\S&OP - Past Due SO\\Daily Past Due Report''' FileFilter: $'''*''' IncludeSubfolders: True FailOnAccessDenied: True SortBy1: Folder.SortBy.CreationTime SortDescending1: True SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
 File.Copy Files: Files[0] Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - Codes\\05_Excel_Files''' IfFileExists: File.IfExists.Overwrite CopiedFiles=> CopiedFiles
 File.RenameFiles.Rename Files: CopiedFiles NewName: $'''SCM_Past_Due_Open_Orders_Template''' KeepExtension: True IfFileExists: File.IfExists.Overwrite RenamedFiles=> RenamedFiles
+WAIT 15
 Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
 
 Set excel = CreateObject(\"Excel.Application\")
@@ -26,6 +30,7 @@ excel.Quit
 
 Set workbook = Nothing
 Set excel = Nothing''' ScriptOutput=> VBScriptOutput
+WAIT 15
 Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
 
 Set excel = CreateObject(\"Excel.Application\")
@@ -41,6 +46,7 @@ excel.Quit
 
 Set workbook = Nothing
 Set excel = Nothing''' ScriptOutput=> VBScriptOutput
+WAIT 15
 Scripting.RunVBScript.RunVBScript VBScriptCode: $'''Dim excel, workbook
 
 Set excel = CreateObject(\"Excel.Application\")
@@ -56,5 +62,6 @@ excel.Quit
 
 Set workbook = Nothing
 Set excel = Nothing''' ScriptOutput=> VBScriptOutput
+WAIT 15
 Folder.Copy Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetAvail''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFolderExists: Folder.IfExists.Overwrite CopiedFolder=> CopiedFolder
 Folder.Copy Folder: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Files Templates\\NetworkFiles''' Destination: $'''C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Reports''' IfFolderExists: Folder.IfExists.Overwrite CopiedFolder=> CopiedFolder
