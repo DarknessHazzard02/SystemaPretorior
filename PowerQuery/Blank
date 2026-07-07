@@ -11,4 +11,4 @@ if (invoh + novih) < 0 then 0 else (invoh + novih), Int64.Type),
     #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"On Hand", "Not Nettable"}),
     #"Added Custom1" = Table.AddColumn(#"Removed Columns", "Total Inventory", each [Total Available] + [In Transit], Int64.Type)
 in
-    #"Added Custom1"
+    #"Added Custom1"    
