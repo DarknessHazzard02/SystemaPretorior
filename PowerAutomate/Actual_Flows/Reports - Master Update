@@ -1,26 +1,19 @@
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Reports\\Automate.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> Automate
+Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\Power_BI - Files\\Open_Workbooks.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> OpenWorkbooks
 WAIT $fx'=3'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\MASTER\\Oracle_Wands_All_Reports.xlsx' Visible: True ReadOnly: False UseMachineLocale: False Instance=> OracleWands
 WAIT $fx'=3'
 Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $fx'C:\\Users\\NMC08UG\\OneDrive - Nidec\\MASTER - MASTER\\MASTER\\Master Motores Template.xlsm' Visible: True ReadOnly: False UseMachineLocale: False Instance=> MasterTemplate
 WAIT $fx'=3'
-Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'RefreshAllPowerQueriesInAllWorkbooks'
+Excel.RunMacro Instance: $fx'=OpenWorkbooks' Macro: $fx'RefreshAllPowerQueriesInAllWorkbooks'
 WAIT $fx'=300'
-Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'Master_Update'
-WAIT $fx'=30'
-Excel.RunMacro Instance: $fx'=Automate' Macro: $fx'RefreshAllPivotTablesInAllWorkbooks'
-WAIT $fx'=30'
+Excel.RunMacro Instance: $fx'=OpenWorkbooks' Macro: $fx'Master_Update'
+WAIT $fx'=300'
 Excel.CloseExcel.CloseAndSave Instance: $fx'=OracleWands'
 ON ERROR REPEAT 2 TIMES WAIT 10
 ON ERROR
 
 END
 Excel.CloseExcel.CloseAndSave Instance: $fx'=MasterTemplate'
-ON ERROR REPEAT 2 TIMES WAIT 10
-ON ERROR
-
-END
-Excel.CloseExcel.CloseAndSave Instance: $fx'=Automate'
 ON ERROR REPEAT 2 TIMES WAIT 10
 ON ERROR
 
