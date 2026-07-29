@@ -1,0 +1,21 @@
+// Made by: Hazzard
+let
+    Source_SharePointFiles = SharePoint.Files("https://nmca.sharepoint.com/sites/PLANNINGNEW", [ApiVersion = 15]),
+
+    Filter_NameContainsMaster_Xlsx = Table.SelectRows(
+        Source_SharePointFiles,
+        each Text.Contains([Name], "Master ") and Text.EndsWith([Extension], ".xlsx")
+    ),
+
+    Sort_ByDateModified_Desc = Table.Sort(Filter_NameContainsMaster_Xlsx, {{"Date modified", Order.Descending}}),
+
+    Keep_LatestFileOnly = Table.FirstN(Sort_ByDateModified_Desc, 1),
+
+    Read_WorkbookBinary = Excel.Workbook(Keep_LatestFileOnly{0}[Content], null, true),
+
+    Select_FirstSheetData = Read_WorkbookBinary{0}[Data],
+
+    Promote_Headers = Table.PromoteHeaders(Select_FirstSheetData, [PromoteAllScalars = true]),
+
+in
+    Promote_Headers
