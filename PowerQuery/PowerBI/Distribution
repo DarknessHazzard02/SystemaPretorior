@@ -8,6 +8,6 @@ let
     Import=Excel.Workbook(LatestFile[Content],null,true),
     ExcelSheet=Import{0}[Data],
     Headers = Table.PromoteHeaders(ExcelSheet, [PromoteAllScalars=true]),
-    Type = Table.TransformColumnTypes(Headers,{{"Production_Line", type text}, {"Frame", type text}, {"DIV", type text}, {"Master", type text}, {"Planner", type text}, {"Line_Class", type text}, {"Set_Ups", type number}})
+    Type = Table.TransformColumnTypes(Headers,{{"Product_Line", type text}, {"Frame", type text}, {"DIV", type text}, {"Master", type text}, {"Planner", type text}, {"Line_Class", type text}, {"Max Set Ups", type number}})
 in
     Type

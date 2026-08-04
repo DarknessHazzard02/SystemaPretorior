@@ -9,7 +9,7 @@ let
     ExcelSheet=Import{0}[Data],
     TopRows=Table.Skip(ExcelSheet,4),
     Headers = Table.PromoteHeaders(TopRows, [PromoteAllScalars=true]),
-    Type = Table.TransformColumnTypes(Headers,{{"ITEM_NUMBER", type text}, {"DESCRIPTION", type text}, {"PRODUCTION_LINE", type text}, {"CUSTOMER", type text}, {"REQUEST_DATE", type date}, {"SCHEDULE_SHIP_DATE", type date}, {"PROMISE_DATE", type date}, {"SCHEDULE_ARRIVAL_DATE", type date}, {"DATE_ORDERED", type date}, {"RELEASE_DATE", type date}, {"REMAINING_QTY", Int64.Type}, {"ORDER_STATUS", type text}, {"HOLD_FLAG", type text}, {"ITEM_TYPE", type text}, {"ORGANIZATION_CODE", type text}, {"ORDER_NUMBER", type number}, {"ORDER_LINES", type number}, {"ORDER_TYPE", type text}, {"CUSTOMER_PURCHASE_ORDER_NUMB", type text}, {"CUSTOMER_NUMBER", type number}, {"UNIT_SELLING_PRICE", Currency.Type}, {"EXT_PRICE", Currency.Type}}),
+    Type = Table.TransformColumnTypes(Headers,{{"ITEM_NUMBER", type text}, {"DESCRIPTION", type text}, {"PRODUCT_LINE", type text}, {"CUSTOMER", type text}, {"REQUEST_DATE", type date}, {"SCHEDULE_SHIP_DATE", type date}, {"PROMISE_DATE", type date}, {"SCHEDULE_ARRIVAL_DATE", type date}, {"DATE_ORDERED", type date}, {"RELEASE_DATE", type date}, {"REMAINING_QTY", Int64.Type}, {"ORDER_STATUS", type text}, {"HOLD_FLAG", type text}, {"ITEM_TYPE", type text}, {"ORGANIZATION_CODE", type text}, {"ORDER_NUMBER", type number}, {"ORDER_LINES", type number}, {"ORDER_TYPE", type text}, {"CUSTOMER_PURCHASE_ORDER_NUMB", type text}, {"CUSTOMER_NUMBER", type number}, {"UNIT_SELLING_PRICE", Currency.Type}, {"EXT_PRICE", Currency.Type}}),
     Empty = Table.SelectRows(Type, each [ITEM_NUMBER] <> null and [ITEM_NUMBER] <> "")
 in
     Empty
