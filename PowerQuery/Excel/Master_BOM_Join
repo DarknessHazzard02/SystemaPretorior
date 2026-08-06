@@ -1,0 +1,9 @@
+let
+    Source = Csv.Document(File.Contents("C:\Users\NMC08UG\OneDrive - Nidec\Documents\GitHub\Master_Advance\BOM_Join_Project\Output\BOM_Maquinados.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Parent_Model", type text}, {"Item_Part", type text}, {"Description", type text}, {"Planner_Code", type text}, {"Product_Line", type text}, {"Item_Type", type text}, {"Quantity", type number}, {"BOM_Key", type text}}),
+    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Parent_Model", Order.Ascending}, {"Item_Part", Order.Ascending}}),
+    #"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Parent_Model] <> null and [Parent_Model] <> ""),
+    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each [Item_Part] <> null and [Item_Part] <> "")
+in
+    #"Filtered Rows1"

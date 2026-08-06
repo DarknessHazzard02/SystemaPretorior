@@ -7,9 +7,9 @@ let
     LatestFile=Table.Max(FileName,"Date modified"),
     Import=Excel.Workbook(LatestFile[Content],null,true),
     ExcelSheet=Import{0}[Data],
-    TopRows=Table.Skip(ExcelSheet,6),
+    TopRows=Table.Skip(ExcelSheet,4),
     Headers = Table.PromoteHeaders(TopRows, [PromoteAllScalars=true]),
-    Type = Table.TransformColumnTypes(Headers,{{"DATE_RELEASED", type date}, {"WIP/JOB", type text}, {"ITEM_NUMBER", type text}, {"PRODUCTION_LINE", type text}, {"STACK", type number}, {"SPEED", Int64.Type}, {"START_DATE", type date}, {"COMPLETION_DATE", type date}, {"FIRST_COMPLETION_DATE", type date}, {"REVISED_SCHEDULED_DATE", type date}, {"START_QTY", Int64.Type}, {"COMPLETED_QTY", Int64.Type}, {"REMAINING_QTY", Int64.Type}, {"ITEM_TYPE", type text}, {"ISO/SO", type text}, {"DESCRIPTION", type text}, {"MOTOR_TYPE", type text}, {"ORDER_STATUS", type text}, {"LAST_UPDATE_DATE", type date}, {"COMMENT", type text}, {"ITEM_STATUS", type text}, {"CLASSIFICATION", type text}, {"CONSTRUCTION_MATERIAL", type text}, {"DESCRIPTION_1", type text}, {"MFG_ORDER_TYPE", type text}, {"ORGANIZATION_NAME", type text}}),
+    Type = Table.TransformColumnTypes(Headers,{{"DATE_RELEASED", type date}, {"WIP/JOB", type text}, {"ITEM_NUMBER", type text}, {"PRODUCT_LINE", type text}, {"STACK", type number}, {"SPEED", Int64.Type}, {"START_DATE", type date}, {"COMPLETION_DATE", type date}, {"FIRST_COMPLETION_DATE", type date}, {"REVISED_SCHEDULED_DATE", type date}, {"START_QTY", Int64.Type}, {"COMPLETED_QTY", Int64.Type}, {"REMAINING_QTY", Int64.Type}, {"ITEM_TYPE", type text}, {"ISO/SO", type text}, {"DESCRIPTION", type text}, {"MOTOR_TYPE", type text}, {"ORDER_STATUS", type text}, {"LAST_UPDATE_DATE", type date}, {"COMMENT", type text}, {"ITEM_STATUS", type text}, {"CLASSIFICATION", type text}, {"CONSTRUCTION_MATERIAL", type text}, {"DESCRIPTION_1", type text}, {"MFG_ORDER_TYPE", type text}, {"ORGANIZATION_NAME", type text}}),
     OrderClass = Table.AddColumn(Type, "Order_Class", each let
         wip = if [#"WIP/JOB"] = null then "" else [#"WIP/JOB"],
         sts = if [ITEM_STATUS] = null then "" else [ITEM_STATUS],
@@ -24,7 +24,7 @@ let
             else "Master Order"
         else
             "Planning Order", type text),
-    ReplaceNull = Table.ReplaceValue(OrderClass,null,"Null",Replacer.ReplaceValue,{"DATE_RELEASED", "WIP/JOB", "ITEM_NUMBER", "PRODUCTION_LINE", "STACK", "SPEED", "START_DATE", "COMPLETION_DATE", "FIRST_COMPLETION_DATE", "REVISED_SCHEDULED_DATE", "START_QTY", "COMPLETED_QTY", "REMAINING_QTY", "ITEM_TYPE", "ISO/SO", "DESCRIPTION", "MOTOR_TYPE", "ORDER_STATUS", "COMMENT", "ITEM_STATUS", "LAST_UPDATE_DATE", "CLASSIFICATION", "CONSTRUCTION_MATERIAL", "DESCRIPTION_1", "MFG_ORDER_TYPE", "ORGANIZATION_NAME", "Order_Class"}),
+    ReplaceNull = Table.ReplaceValue(OrderClass,null,"Null",Replacer.ReplaceValue,{"DATE_RELEASED", "WIP/JOB", "ITEM_NUMBER", "PRODUCT_LINE", "STACK", "SPEED", "START_DATE", "COMPLETION_DATE", "FIRST_COMPLETION_DATE", "REVISED_SCHEDULED_DATE", "START_QTY", "COMPLETED_QTY", "REMAINING_QTY", "ITEM_TYPE", "ISO/SO", "DESCRIPTION", "MOTOR_TYPE", "ORDER_STATUS", "COMMENT", "ITEM_STATUS", "LAST_UPDATE_DATE", "CLASSIFICATION", "CONSTRUCTION_MATERIAL", "DESCRIPTION_1", "MFG_ORDER_TYPE", "ORGANIZATION_NAME", "Order_Class"}),
     RemoveColumns = Table.RemoveColumns(ReplaceNull,{"DESCRIPTION_1", "MFG_ORDER_TYPE", "ORGANIZATION_NAME"}),
     #"Sorted Rows" = Table.Sort(RemoveColumns,{{"ITEM_NUMBER", Order.Ascending}, {"COMPLETION_DATE", Order.Ascending}, {"DATE_RELEASED", Order.Ascending}})
     in
