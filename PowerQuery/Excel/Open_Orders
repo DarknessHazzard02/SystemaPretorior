@@ -1,3 +1,4 @@
+// Made by: Hazzard
 let
     Sharepoint = SharePoint.Files("https://nmca.sharepoint.com/sites/MASTER365/", [ApiVersion = 15]),
     FolderColumns = Table.RemoveColumns(Sharepoint,{"Date accessed", "Date created", "Attributes"}),

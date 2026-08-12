@@ -1,3 +1,4 @@
+// Made by: Hazzard
 let
     Source = Csv.Document(File.Contents("C:\Users\NMC08UG\OneDrive - Nidec\Documents\GitHub\Master_Advance\BOM_Join_Project\Output\BOM_Maquinados.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
